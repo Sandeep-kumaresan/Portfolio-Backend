@@ -1,4 +1,7 @@
 package com.sandeep.portfolio.repository;
 
-public class Projectrepo {
+import com.sandeep.portfolio.entity.Project;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface Projectrepo extends JpaRepository<Project,Integer> {
 }

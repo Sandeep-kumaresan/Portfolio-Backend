@@ -1,4 +1,7 @@
 package com.sandeep.portfolio.repository;
 
-public class Mediarepo {
+import com.sandeep.portfolio.entity.Media;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface Mediarepo extends JpaRepository<Media,Integer> {
 }

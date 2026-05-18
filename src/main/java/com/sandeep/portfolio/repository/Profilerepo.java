@@ -1,4 +1,7 @@
 package com.sandeep.portfolio.repository;
 
-public class Profilerepo {
+import com.sandeep.portfolio.entity.Profile;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface Profilerepo extends JpaRepository<Profile,Integer> {
 }
