@@ -26,4 +26,9 @@ public class ProfileController {
     public Profile saveProfile(@RequestBody ProfileDTO profileDTO){
         return profileService.saveProfile(profileDTO);
     }
+
+    @PutMapping("/update-profile")
+    public Profile updateProfile(@RequestBody ProfileDTO profileDTO, @RequestParam Long id){
+        return profileService.updateProfile(profileDTO,id);
+    }
 }

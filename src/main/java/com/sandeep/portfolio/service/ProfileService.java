@@ -39,6 +39,18 @@ public class ProfileService {
         return profilerepo.save(profile);
 
     }
+
+    public Profile updateProfile(ProfileDTO profileDTO,Long id){
+        Profile profile = profilerepo.findById(id).orElseThrow(() -> new RuntimeException("Profile not found"));;
+        profile.setName(profileDTO.getName());
+        profile.setTitle(profileDTO.getTitle());
+        profile.setAbout(profileDTO.getAbout());
+        profile.setLinkedinUrl(profileDTO.getLinkedinUrl());
+        profile.setGithubUrl(profileDTO.getGithubUrl());
+        profile.setResumeUrl(profileDTO.getResumeUrl());
+        profile.setProfileImageUrl(profileDTO.getProfileImageUrl());
+        return profilerepo.save(profile);
+    }
 //    @Autowired
 //    public void setProfilerepo(Profilerepo profilerepo) {
 //        this.profilerepo = profilerepo;
