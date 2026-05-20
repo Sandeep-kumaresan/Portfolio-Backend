@@ -40,27 +40,41 @@ public class ProjectService {
         return dto;
     }
 
-    public Project addProject(ProjectDTO projectDTO){
+    public ProjectDTO addProject(ProjectDTO projectDTO){
         Project project = new Project();
         project.setTitle(projectDTO.getTitle());
         project.setDescription(projectDTO.getDescription());
         project.setTech_stack(projectDTO.getTech_stack());
         project.setGithub_url(projectDTO.getGithub_url());
-        return projectrepo.save(project);
+        Project savedProject = projectrepo.save(project);
+
+        ProjectDTO dto = new ProjectDTO();
+
+        dto.setTitle(savedProject.getTitle());
+        dto.setDescription(savedProject.getDescription());
+        dto.setTech_stack(savedProject.getTech_stack());
+        dto.setGithub_url(savedProject.getGithub_url());
+
+        return dto;
     }
 
-    public Project updateProject(ProjectDTO projectDTO,Long id){
+    public ProjectDTO updateProject(ProjectDTO projectDTO,Long id){
         Project project = projectrepo.findById(id).orElseThrow(() -> new RuntimeException("Project not found"));;
         project.setTitle(projectDTO.getTitle());
         project.setDescription(projectDTO.getDescription());
         project.setTech_stack(projectDTO.getTech_stack());
         project.setGithub_url(projectDTO.getGithub_url());
-        return projectrepo.save(project);
+        Project project1 = projectrepo.save(project);
+        ProjectDTO dto = new ProjectDTO();
+        dto.setTitle(project1.getTitle());
+        dto.setDescription(project1.getDescription());
+        dto.setTech_stack(project1.getTech_stack());
+        dto.setGithub_url(project1.getGithub_url());
+        return dto;
     }
 
-    public Project deleteProject(Long id){
+    public void deleteProject(Long id){
         Project project = projectrepo.findById(id).orElseThrow(() -> new RuntimeException("Project not found"));;
         projectrepo.delete(project);
-        return project;
     }
 }
